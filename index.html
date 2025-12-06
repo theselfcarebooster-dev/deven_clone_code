@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>The Self Care Lab</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Custom CSS for Doctor Card Hover Effect -->
+  <style>
+    .doctor-card {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .doctor-image-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 50%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #CFE7C6 0%, #716F81 100%);
+      /* Mustard Gold to Maroon */
+      padding: 8px;
+    }
+
+    .doctor-image-container:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .doctor-image-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      border: 4px solid white;
+    }
+
+    .social-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .doctor-image-container:hover .social-overlay {
+      opacity: 1;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: white;
+      color: #333;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .social-icons a:hover {
+      background: #CFE7C6;
+      /* Mustard Gold */
+      color: #716F81;
+      color: white;
+      transform: scale(1.1);
+    }
+
+    .social-icons a i {
+      font-size: 18px;
+    }
+
+    /* Enhanced Hero Section Styles */
+    .hero .container {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 40px 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero .container h2 {
+      font-size: 3rem;
+    
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .hero .container h3 {
+      font-size: 2.5rem;
+
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      margin-bottom: 1.5rem;
+      color: white;
+    }
+
+    .hero .container p {
+      font-size: 1.2rem;
+  
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+      margin-bottom: 2rem;
+      color: white;
+    }
+
+    .hero .container ul {
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero .container ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .btn-outline-light {
+      border: 2px solid white;
+      color: white;
+
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .hero .btn-outline-light:hover {
+      background: white;
+      color: var(--default-color);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-point {
+      transition: all 0.3s ease;
+    }
+
+    .hero-point:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero-stats div {
+      transition: all 0.3s ease;
+    }
+
+    .hero-stats div:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(165, 148, 249, 0.3);
+    }
+
+    .hero-feature-box {
+      transition: all 0.3s ease;
+    }
+
+    .hero-feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Feature Cards Styles */
+    .feature-card {
+      background: white;
+      border-radius: 20px;
+      padding: 35px 30px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+      border: 1px solid #f5f5f5;
+      display: flex;
+      align-items: flex-start;
+      gap: 25px;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(135deg, #CFE7C6 0%, #716F81 100%);
+      /* Mustard Gold to Maroon */
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: #CFE7C6;
+      /* Mustard Gold */
+    }
+
+    .feature-icon {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #CFE7C6 0%, #716F81 100%);
+      /* Mustard Gold to Maroon */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 211, 78, 0.3);
+      /* Mustard Gold shadow */
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(255, 211, 78, 0.4);
+      /* Mustard Gold shadow */
+    }
+
+    .feature-icon i {
+      font-size: 32px;
+      color: white;
+    }
+
+    .feature-content {
+      flex: 1;
+    }
+
+    .feature-content h4 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 18px;
+      line-height: 1.3;
+      transition: color 0.3s ease;
+    }
+
+    .feature-card:hover .feature-content h4 {
+      color: #CFE7C6;
+      /* Mustard Gold */
+    }
+
+    .feature-content p {
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 0;
+      font-size: 16px;
+    }
+
+    /* Enhanced responsive design */
+    @media (max-width: 992px) {
+      .hero .container {
+        padding: 35px 25px;
+      }
+
+      .hero .container h2 {
+        font-size: 2.5rem;
+      }
+
+      .hero .container h3 {
+        font-size: 2.2rem;
+      }
+
+      .feature-card {
+        padding: 30px 25px;
+        gap: 20px;
+      }
+
+      .feature-icon {
+        width: 70px;
+        height: 70px;
+      }
+
+      .feature-icon i {
+        font-size: 28px;
+      }
+
+      .feature-content h4 {
+        font-size: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero .container {
+        padding: 30px 20px;
+        margin: 0 15px;
+      }
+
+      .hero .container h2 {
+        font-size: 2rem;
+      }
+
+      .hero .container h3 {
+        font-size: 1.8rem;
+      }
+
+      .hero .container p {
+        font-size: 1.1rem;
+      }
+
+      .feature-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+        gap: 20px;
+      }
+
+      .feature-icon {
+        margin: 0 auto;
+        width: 75px;
+        height: 75px;
+      }
+
+      .feature-icon i {
+        font-size: 30px;
+      }
+
+      .feature-content h4 {
+        font-size: 19px;
+      }
+
+      .feature-content p {
+        font-size: 15px;
+      }
+    }
+  </style>
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header sticky-top">
+
+    <div class="topbar d-flex align-items-center">
+      <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="d-none d-md-flex align-items-center">
+          <!-- <i class="bi bi-clock me-1"></i> -->
+          <!-- Monday - Saturday, 9AM to 7PM -->
+        </div>
+        <div class="d-flex align-items-center">
+          <!-- <i class="bi bi-phone me-1"></i> Schedule a consultation at +91 7506802501</a> -->
+<div class="d-flex align-items-center">
+  <a href="tel:+917506802501"
+     class="d-flex align-items-center phone-link"
+     style="color: black; text-decoration: none;">
+    <i class="bi bi-phone me-1"></i> Schedule a consultation at +91 7506802501
+  </a>
+</div>
+
+        </div>
+      </div>
+    </div><!-- End Top Bar -->
+
+    <div class="branding d-flex align-items-center">
+
+      <div class="container position-relative d-flex align-items-center justify-content-end">
+        <a href="index.html" class="logo d-flex align-items-center me-auto">
+          <!-- <img src="assets/img/TheSelfCareLab/final_logo.svg" alt="" -->
+             <img src="assets/img/TheSelfCareLab/BlackLogo.png" alt=""
+            style="width: 120px; height: auto; max-height: 80px;">
+          <!-- Uncomment the line below if you also wish to use a text logo -->
+          <!-- <h1 class="sitename">Medicio</h1>  -->
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="#hero" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services-offered">Services</a></li>
+            <!-- <li><a href="#pricing">Pricing</a></li> -->
+            <li class="dropdown"><a href="#"><span>Resources</span> <i
+                  class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <ul>
+                <li><a href="https://www.linkedin.com/posts/drshark_people-love-togossip-about-your-failures-activity-7379477770428461056-i5JN/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADeycHABLtRyJjl83Wfnd4syVXGnLRNRYB4" target="_blank">Personal Blog</a></li>
+                <!-- <li><a href="https://www.linkedin.com/feed/update/urn:li:activity:7380451528999919616/" target="_blank">Articles & Research</a></li> -->
+                <li><a href="#testimonials">Success Stories</a></li>
+              </ul>
+            </li>
+            <!-- <li><a href="#contact">Contact</a></li> -->
+            <li><a href="booking.html">Schedule a Meet</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <a class="cta-btn" href="booking.html">Book Your Assessment</a>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="main">
+
+    <!-- Hero Section with Why This? Why Now? -->
+    <section id="hero" class="hero section">
+
+      <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+        <div class="carousel-item active">
+          <img src="assets/img/hero-carousel/wp-1.jpg" alt="">
+
+          <div class="container">
+            <h2>Welcome to the Self-Care Lab</h2>
+            <p>At The Self Care Lab, we know self care isn’t one size fits all. Combining psychology with practical tools, we help you find what genuinely works for you. Whether you’re burnt out or seeking clarity, we guide you toward sustainable, personalized self care rooted in real insight not just quick fixes or spa days.
+            </p>
+            <!-- <a href="#about" class="btn-get-started">Read More</a> -->
+            <!-- <a href="#welcome" class="btn-get-started">Read More</a> -->
+          </div>
+        </div><!-- End Carousel Item -->
+
+       
+        <div class="carousel-item">
+          <img src="assets/img/hero-carousel/todo.png" alt="">
+          <div class="container">
+            <h2>Personalized Self Care, Rooted in Psychology</h2>
+            <p>Clarity, confidence, and emotional insight through cognitive behavioral therapy and modern counseling.
+            </p>
+            <!-- <a href="#welcome" class="btn-get-started">Read More</a> -->
+          </div>
+        </div>End Carousel Item
+
+        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+        <ol class="carousel-indicators"></ol>
+
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <!-- Image Hover Cards Section (before Self Care Service) -->
+    <style>
+      /* Scoped styles for Image Hover Cards */
+      #image-hover-cards .hover-card {
+        position: relative;
+        display: block;
+        width: 100%;
+        max-width: 280px; /* keep card from being too wide */
+        margin: 0 auto;   /* center within column */
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        background: var(--surface-color, #fff);
+      }
+      /* Maintain consistent card height; allows images of varying aspect ratios */
+      #image-hover-cards .hover-card .media-wrap {
+        position: relative;
+        width: 100%;
+        height: 220px;
+        background: transparent; /* no filler color; show only the image */
+      }
+      @media (min-width: 1200px) {
+        #image-hover-cards .hover-card .media-wrap { height: 240px; }
+      }
+      #image-hover-cards .hover-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+      }
+      #image-hover-cards .hover-card .media-wrap img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;       /* fill area; no white sidebars */
+        object-position: center;  /* keep subject centered */
+        display: block;
+      }
+      /* Always-visible title strip at the bottom of the image */
+      #image-hover-cards .title-strip {
+        position: absolute;
+        left: 0; right: 0; bottom: 0;
+        z-index: 2;
+        padding: 10px 12px;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.8) 100%);
+        color: #fff;
+      }
+      #image-hover-cards .title-strip h4 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 800;
+        color: #fff;
+        text-align: left;
+      }
+      @media (min-width: 1200px) {
+        #image-hover-cards .title-strip h4 { font-size: 1.05rem; }
+      }
+      /* Slide-up description panel on hover */
+      #image-hover-cards .desc-panel {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        align-items: flex-end;
+        padding: 12px;
+        padding-bottom: 60px; /* leave space for the title strip */
+        background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.15) 100%);
+        color: #fff;
+        transform: translateY(100%);
+        transition: transform 0.35s ease;
+        text-align: left;
+      }
+      #image-hover-cards .hover-card:hover .desc-panel { transform: translateY(0); }
+      #image-hover-cards .desc-panel p {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.35;
+        opacity: 0.98;
+      }
+    </style>
+
+
+
+<section id="featured-services" class="featured-services section">
+  <div class="container">
+    <div class="row gy-4">
+
+      <!-- Guidance -->
+      <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+        <div class="service-item position-relative">
+          <div style="display: flex; align-items: flex-start; gap: 30px; margin-bottom: 10px;">
+            <span class="icon" style="display: flex; align-items: center;">
+              <i class="fas fa-map-signs icon"></i>
+            </span>
+                <h4 style="margin: 0; display: flex; align-items: center; line-height: 1.2; position: relative; top: 2px;">
+                  <a href="#" class="stretched-link">Guidance</a>
+                </h4>
+          </div>
+              <div id="fs-collapse-1" class="service-collapsible">
+                <div>
+                  <p>
+                    <strong>Focus:</strong> Providing information, suggestions, or direction to help someone make decisions (e.g., career, education, lifestyle).<br>
+                    <strong>Nature:</strong> Preventive and developmental.<br>
+                    <strong>Relationship:</strong> Not very deep; often short-term.<br>
+                    <strong>Example:</strong> A student asking for career options after graduation.
+                  </p>
+                </div>
+              </div>
+              <button class="service-toggle" type="button" aria-expanded="false" aria-controls="fs-collapse-1" title="Want to know more">
+                <i class="bi bi-info-circle info-icon" aria-hidden="true"></i>
+              </button>
+        </div>
+      </div>
+      <!-- End Service Item -->
+
+      <!-- Counselling -->
+      <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+        <div class="service-item position-relative">
+          <div style="display: flex; align-items: flex-start; gap: 30px; margin-bottom: 10px;">
+            <span class="icon" style="display: flex; align-items: center;">
+              <i class="fas fa-comments icon"></i>
+            </span>
+                <h4 style="margin: 0; display: flex; align-items: center; line-height: 1.2; position: relative; top: 2px;">
+                  <a href="#" class="stretched-link">Counselling</a>
+                </h4>
+          </div>
+              <div id="fs-collapse-2" class="service-collapsible">
+                <div>
+                  <p>
+                    <strong>Focus:</strong> Helping individuals explore and resolve emotional, social, or personal issues through dialogue.<br>
+                    <strong>Nature:</strong> Supportive and collaborative; insight-oriented.<br>
+                    <strong>Relationship:</strong> Requires trust and rapport; short- to mid-term.<br>
+                    <strong>Example:</strong> Helping someone manage stress, relationship issues, or low self-esteem.
+                  </p>
+                </div>
+              </div>
+              <button class="service-toggle" type="button" aria-expanded="false" aria-controls="fs-collapse-2" title="Want to know more">
+                <i class="bi bi-info-circle info-icon" aria-hidden="true"></i>
+              </button>
+        </div>
+      </div>
+      <!-- End Service Item -->
+
+      <!-- Therapy -->
+      <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+        <div class="service-item position-relative">
+          <div style="display: flex; align-items: flex-start; gap: 30px; margin-bottom: 10px;">
+            <span class="icon" style="display: flex; align-items: center;">
+              <i class="fas fa-user-md icon"></i>
+            </span>
+                <h4 style="margin: 0; display: flex; align-items: center; line-height: 1.2; position: relative; top: 2px;">
+                  <a href="#" class="stretched-link">Therapy</a>
+                </h4>
+          </div>
+              <div id="fs-collapse-3" class="service-collapsible">
+                <div>
+                  <p>
+                    <strong>Focus:</strong> Treating psychological disorders, trauma, or deeply rooted emotional struggles using specialized therapeutic approaches.<br>
+                    <strong>Nature:</strong> Clinical, diagnostic, often long-term.<br>
+                    <strong>Relationship:</strong> Deep, structured, and guided by trained mental health professionals.<br>
+                    <strong>Example:</strong> Cognitive Behavioral Therapy for anxiety or depression.
+                  </p>
+                </div>
+              </div>
+              <button class="service-toggle" type="button" aria-expanded="false" aria-controls="fs-collapse-3" title="Want to know more">
+                <i class="bi bi-info-circle info-icon" aria-hidden="true"></i>
+              </button>
+        </div>
+      </div>
+      <!-- End Service Item -->
+
+      <!-- Training -->
+      <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+        <div class="service-item position-relative">
+          <div style="display: flex; align-items: flex-start; gap: 30px; margin-bottom: 10px;">
+            <span class="icon" style="display: flex; align-items: center;">
+              <i class="fas fa-chalkboard-teacher icon"></i>
+            </span>
+                <h4 style="margin: 0; display: flex; align-items: center; line-height: 1.2; position: relative; top: 2px;">
+                  <a href="#" class="stretched-link">Training</a>
+                </h4>
+          </div>
+              <div id="fs-collapse-4" class="service-collapsible">
+                <div>
+                  <p>
+                    <strong>Focus:</strong> Teaching specific skills or competencies through structured programs.<br>
+                    <strong>Nature:</strong> Practical, goal-oriented, and usually group-based.<br>
+                    <strong>Relationship:</strong> Instructor–participant dynamic.<br>
+                    <strong>Example:</strong> Assertiveness training, emotional intelligence workshops, communication skills sessions.
+                  </p>
+                </div>
+              </div>
+              <button class="service-toggle" type="button" aria-expanded="false" aria-controls="fs-collapse-4" title="Want to know more">
+                <i class="bi bi-info-circle info-icon" aria-hidden="true"></i>
+              </button>
+        </div>
+      </div>
+      <!-- End Service Item -->
+
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Collapsible content for bottom Featured Services */
+  .service-collapsible {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+    margin-bottom: 4px;
+  }
+  .service-collapsible.open {
+    grid-template-rows: 1fr;
+  }
+  .service-collapsible > div {
+    overflow: hidden;
+  }
+  .service-toggle {
+    background: transparent;
+    border: 0;
+    /* inherit the surrounding text color so the info icon matches the title color (e.g., "Guidance") */
+    color: inherit;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    /* position the info icon in the top-right of the service card */
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px; /* keep a tappable hit area */
+    z-index: 50; /* ensure above stretched-link and content */
+  }
+  /* When the card is hovered and background turns accent, switch toggle color to contrast like icon/text */
+  .featured-services .service-item:hover .service-toggle {
+    color: var(--contrast-color);
+  }
+  .service-toggle:focus {
+    outline: 2px solid color-mix(in srgb, var(--accent-color), black 15%);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  /* Info icon: hidden by default, shown on hover/focus */
+  .service-toggle .info-icon {
+    font-size: 18px;
+    /* visible by default and use the inherited text color */
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+    color: currentColor; /* ensure it matches the surrounding text color */
+    display: inline-block;
+    line-height: 1;
+  }
+  /* small hover lift for subtle motion */
+  .featured-services .service-item:hover .service-toggle .info-icon,
+  .service-toggle:focus .info-icon,
+  .service-toggle:hover .info-icon {
+    transform: translateY(-2px);
+  }
+</style>
+
+<script>
+  // Toggle Show More/Less for bottom Featured Services cards
+  (function() {
+    document.querySelectorAll('#featured-services .service-item .service-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        var targetId = btn.getAttribute('aria-controls');
+        var container = document.getElementById(targetId);
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+
+        if (!container) return;
+
+        if (expanded) {
+          container.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          container.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+  </script>
+
+
+    <!-- /Call To Action Section -->
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>About Naresh</h2>
+        <p>Counseling Psychologist & Founder</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <!-- Profile -->
+        <div class="row gy-4">
+          <div class="col-lg-6 d-flex align-items-center justify-content-center" data-aos="fade-up"
+            data-aos-delay="100">
+            <div class="doctor-card">
+              <div class="doctor-image-container">
+                <img src="assets/img/doctors/latest_dr_shark_ok.jpg" class="img-fluid rounded-circle" alt="Naresh">
+                <div class="social-overlay">
+                  <div class="social-icons">
+                    <!-- <a href=""><i class="bi bi-twitter-x"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a> -->
+                    <a href="https://www.instagram.com/theselfcarebooster/"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/drshark/"><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 content d-flex flex-column justify-content-center" data-aos="fade-up"
+            data-aos-delay="200">
+            <h3>Hi, I'm Naresh Thakur</h3>
+            <h4 class="mb-3">Counseling Psychologist | Mental Health Educator | Founder, The Self Care Lab</h4>
+            <p class="mb-4" style="text-align:justify;">
+              I help individuals create meaningful change not through pressure or quick fixes, but through clarity,
+              structure, and self awareness.
+            </p>
+            <p class="mb-0" style="text-align:justify;">
+   The Self Care Lab, I blend evidencebased psychology with practical tools and technology to help you build a personalized self care operating system grounded in four pillars: self awareness, self-concept, self-efficacy, and self-esteem.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    <!-- Stats Section -->
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+         <!-- New Stats Item -->
+      <div class="col-lg-4 col-md-6">
+        <div class="stats-item d-flex align-items-center w-100 h-100">
+         <i class="fas fa-award flex-shrink-0"></i>
+          <div>
+            <p><strong>Certified in CBT</strong><br>from Aaron Beck Institute</p>
+          </div>
+        </div>
+      </div><!-- End Stats Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="fas fa-users flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1"
+                  class="purecounter"></span>
+                <p>Clients Helped</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-4 col-md-6">
+            <div class="stats-item d-flex align-items-center w-100 h-100">
+              <i class="fas fa-graduation-cap flex-shrink-0"></i>
+              <div>
+                <span data-purecounter-start="0" data-purecounter-end="1000" data-purecounter-duration="1"
+                  class="purecounter"></span>
+                <p>Hours of Training</p>
+              </div>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+
+
+    <!-- Services Section (Replaced) -->
+    <!-- <section id="services" class="services section therapy"> -->
+
+      <style>
+        /* Scoped styles for Therapy Services */
+        #services.therapy .section-title h2 { color: var(--heading-color); }
+        #services.therapy .therapy-switch .switch-btn{
+          display: inline-block; margin: 0 8px; padding: 10px 18px; border-radius: 999px; border: 2px solid var(--accent-color);
+          color: var(--accent-color); background: transparent; font-weight: 800; letter-spacing: 0.2px; cursor: pointer;
+          transition: all .2s ease;
+        }
+        #services.therapy .therapy-switch{ display: flex; gap: 12px; justify-content: flex-start; margin-bottom: 18px; }
+        #services.therapy .therapy-switch .switch-btn.active{
+          background: var(--accent-color); color: var(--surface-color); box-shadow: 0 6px 18px rgba(165,148,249,.28);
+        }
+        #services.therapy .therapy-card {
+          background: var(--surface-color);
+          border: 2px solid color-mix(in srgb, var(--accent-color), white 40%);
+          border-radius: 16px;
+          padding: 28px;
+          height: 100%;
+          position: relative;
+          overflow: hidden;
+          box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+        }
+        /* Simple price line under titles */
+        #services.therapy .therapy-card .price{ color: var(--default-color); font-weight: 700; font-size: 1.05rem; margin: 4px 0 12px 0; }
+        #services.therapy .therapy-card .price-badge {
+          position: absolute; top: 16px; right: 16px;
+          background: var(--accent-color); color: var(--contrast-color);
+          padding: 6px 12px; border-radius: 14px; font-weight: 700; font-size: 0.9rem;
+        }
+        #services.therapy .therapy-card .icon {
+          width: 64px; height: 64px; border-radius: 50%;
+          display: flex; align-items: center; justify-content: center;
+          background: linear-gradient(135deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), black 12%) 100%);
+          color: #fff; margin-bottom: 16px; font-size: 24px;
+        }
+        #services.therapy h3 { color: var(--heading-color); font-weight: 800; margin: 0 0 6px 0; }
+        #services.therapy h4 { color: var(--heading-color); font-weight: 700; margin: 0 0 14px 0; font-size: 1.05rem; }
+        #services.therapy p { color: var(--default-color); }
+        #services.therapy .btn-primary {
+          display: inline-block; background: var(--accent-color); color: var(--surface-color);
+          padding: 12px 22px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 0.95rem;
+          transition: transform .2s ease, box-shadow .2s ease, background .2s ease; border: none;
+          box-shadow: 0 6px 18px rgba(165,148,249,.28);
+        }
+        #services.therapy .btn-primary:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--accent-color), black 10%); }
+        #services.therapy ul.bullets { margin: 14px 0 0 0; padding-left: 0; list-style: none; }
+        #services.therapy ul.bullets li { display: flex; align-items: flex-start; gap: 10px; margin: 8px 0; color: var(--default-color); }
+        #services.therapy ul.bullets li i { color: var(--accent-color); margin-top: 3px; }
+
+        /* Couple Plans */
+        #services.therapy .plans .plan-card {
+          background: var(--surface-color);
+          border: 1px solid color-mix(in srgb, var(--accent-color), white 60%);
+          border-radius: 14px; padding: 24px; height: 100%;
+          box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+        #services.therapy .plans .plan-card.featured { border: 2px solid var(--accent-color); }
+        #services.therapy .plans h3 { color: var(--heading-color); font-weight: 800; margin-bottom: 8px; }
+        #services.therapy .plans .price { font-size: 1.25rem; font-weight: 800; color: var(--accent-color); margin-bottom: 10px; }
+        #services.therapy .plans ul { margin: 0 0 14px 0; padding-left: 0; list-style: none; }
+        #services.therapy .plans ul li { display: flex; align-items: flex-start; gap: 10px; margin: 8px 0; color: var(--default-color); }
+        #services.therapy .plans ul li i { color: var(--accent-color); margin-top: 3px; }
+        #services.therapy .plans .btn-outline {
+          display: inline-block; border: 2px solid var(--accent-color); color: var(--accent-color);
+          padding: 10px 18px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: .95rem;
+          transition: all .2s ease;
+        }
+  #services.therapy .plans .btn-outline:hover { background: var(--accent-color); color: var(--surface-color); }
+
+        /* Softer Couple mode (avoid full purple cards) */
+        #services.therapy.mode-couple .therapy-card,
+        #services.therapy.mode-couple .plans .plan-card{
+          background: var(--surface-color);
+          color: inherit;
+          border-color: color-mix(in srgb, var(--accent-color), white 40%);
+        }
+        #services.therapy.mode-couple h3,
+        #services.therapy.mode-couple h4,
+        #services.therapy.mode-couple p,
+        #services.therapy.mode-couple li,
+        #services.therapy.mode-couple .therapy-card .price,
+        #services.therapy.mode-couple .plans .price{ color: var(--default-color); }
+        #services.therapy.mode-couple .icon{ background: linear-gradient(135deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), black 12%) 100%); color: #fff; }
+        #services.therapy.mode-couple .btn-primary{ background: var(--accent-color); color: var(--surface-color); box-shadow: 0 6px 18px rgba(165,148,249,.28); }
+        #services.therapy.mode-couple .btn-primary:hover{ background: color-mix(in srgb, var(--accent-color), black 10%); }
+        #services.therapy.mode-couple .plans .btn-outline{ border-color: var(--accent-color); color: var(--accent-color); }
+        #services.therapy.mode-couple .plans .btn-outline:hover{ background: var(--accent-color); color: var(--surface-color); }
+      </style>
+
+    
+ 
+
+
+    <!-- Services Section -->
+    <section id="services-offered" class="services-offered section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Services Offered</h2>
+        <p>Choose the right path for your self-care journey | <a href="booking.html" class="fw-bold">Take your first discovery call</a></p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+
+          <!-- Counselling Session 1:1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="flip-card" onclick="flipCard(this)">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="service-icon">
+                    <i class="bi bi-person-heart"></i>
+                  </div>
+                  <h3>Counselling Session 1:1</h3>
+                  <div class="service-benefit">Individual Support</div>
+                  <p class="service-summary">One-on-one personalized counselling sessions</p>
+                  <div class="flip-indicator">
+                    <i class="bi bi-arrow-right-circle"></i>
+                    <span>Click to see details</span>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <h3>Counselling Session 1:1</h3>
+                  <div class="price-info">
+                    <h4><sup>₹</sup>1,500<span> / session</span></h4>
+                  </div>
+                  <p>One-on-one personalized counselling sessions designed to address your unique mental health needs in a safe, confidential environment.</p>
+                  <ul>
+                    <li><i class="bi bi-check-circle-fill"></i><span>50-minute individual session</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Personalized assessment & treatment plan</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Evidence-based therapeutic approaches</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Safe, judgment-free space</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Online and offline modes available</span></li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="booking.html?service=individual" class="btn-book">Book Session</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Self Care Pack -->
+          <div class="col-lg-4 col-md-6">
+            <div class="flip-card featured" onclick="flipCard(this)">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="featured-badge">Most Popular</div>
+                  <div class="service-icon">
+                    <i class="bi bi-heart-pulse"></i>
+                  </div>
+                  <h3>Self Care Pack</h3>
+                  <div class="service-benefit">Complete Wellness</div>
+                  <p class="service-summary">3 Sessions + Resources</p>
+                  <div class="flip-indicator">
+                    <i class="bi bi-arrow-right-circle"></i>
+                    <span>Click to see details</span>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <h3>Self Care Pack</h3>
+                  <div class="price-info">
+                    <h4><sup>₹</sup>4,000<span> (3 Sessions + Resources)</span></h4>
+                  </div>
+                  <p>Comprehensive self-care program combining multiple sessions with personalized tools and ongoing support for sustainable mental wellness.</p>
+                  <ul>
+                    <li><i class="bi bi-check-circle-fill"></i><span>3 x 50-minute counselling sessions</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Personalized self-care toolkit</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Weekly check-in resources</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Custom mindfulness exercises</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Progress tracking & adjustments</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Email support between sessions</span></li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="booking.html?service=couple" class="btn-book">Book Self Care Pack</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Monthly Mentorship Program -->
+          <div class="col-lg-4 col-md-6">
+            <div class="flip-card" onclick="flipCard(this)">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="service-icon">
+                    <i class="bi bi-calendar-check"></i>
+                  </div>
+                  <h3>Monthly Mentorship Program</h3>
+                  <div class="service-benefit">Ongoing Support</div>
+                  <p class="service-summary">4 sessions per month (weekly)</p>
+                  <p class="small text-muted mb-0">(Only for students)</p>
+                  <div class="flip-indicator">
+                    <i class="bi bi-arrow-right-circle"></i>
+                    <span>Click to see details</span>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <h3>Monthly Mentorship Program</h3>
+                  <div class="price-info">
+                    <h4><sup>₹</sup>15,000<span> / month <small>(Only for students)</small></span></h4>
+                  </div>
+                  <p>Ongoing monthly mentorship for continuous growth, accountability, and support in your mental health journey with regular sessions and priority access.</p>
+                  <ul>
+                    <li><i class="bi bi-check-circle-fill"></i><span>4 sessions per month (weekly)</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Priority scheduling & flexible timing</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Monthly progress reviews</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>24/7 crisis support access</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Personalized monthly goals</span></li>
+                    <li><i class="bi bi-check-circle-fill"></i><span>Continuous accountability & guidance</span></li>
+                  </ul>
+                  <div class="btn-wrap">
+                    <a href="booking.html?service=consultation" class="btn-book">Start Mentorship</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            </div>
+
+          </div><!-- End Services Column-->
+        </div>
+      </div>
+
+      <style>
+        /* Flip Cards Styles */
+        .flip-card {
+          background-color: transparent;
+          width: 100%;
+          height: 460px;
+          border-radius: 15px;
+          perspective: 1000px;
+          cursor: pointer;
+          margin-bottom: 30px;
+        }
+
+        .flip-card-inner {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          text-align: center;
+          transition: transform 0.8s;
+          transform-style: preserve-3d;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+          transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          border-radius: 15px;
+          padding: 35px 30px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .flip-card-front {
+          background: linear-gradient(135deg, var(--surface-color) 0%, rgba(207, 231, 198, 0.05) 100%);
+          border: 2px solid rgba(207, 231, 198, 0.3);
+        }
+
+        .flip-card-back {
+          background: var(--surface-color);
+          border: 2px solid var(--accent-color);
+          transform: rotateY(180deg);
+          overflow-y: auto;
+        }
+
+        .flip-card.featured .flip-card-front {
+          border: 2px solid var(--accent-color);
+          background: linear-gradient(135deg, var(--surface-color) 0%, rgba(207, 231, 198, 0.1) 100%);
+        }
+
+        .featured-badge {
+          position: absolute;
+          top: 15px;
+          right: 15px;
+          background: var(--accent-color);
+          color: white;
+          padding: 6px 12px;
+          border-radius: 8px;
+          font-size: 12px;
+          font-weight: 700;
+          z-index: 2;
+        }
+
+        .service-icon {
+          width: 80px;
+          height: 80px;
+          background: linear-gradient(135deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), black 10%) 100%);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 20px;
+        }
+
+        .service-icon i {
+          font-size: 36px;
+          color: white;
+        }
+
+        .flip-card h3 {
+          color: var(--heading-color);
+          font-size: 20px;
+          font-weight: 700;
+          margin: 0 0 15px 0;
+          line-height: 1.3;
+        }
+
+        .price-highlight {
+          color: var(--accent-color);
+          font-size: 24px;
+          font-weight: 800;
+          margin-bottom: 10px;
+        }
+
+        .service-benefit {
+          color: var(--accent-color);
+          font-size: 18px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          padding: 8px 16px;
+          background: rgba(207, 231, 198, 0.2);
+          border-radius: 20px;
+          border: 1px solid rgba(207, 231, 198, 0.4);
+        }
+
+        .service-summary {
+          color: var(--default-color);
+          font-size: 14px;
+          margin-bottom: 20px;
+          opacity: 0.8;
+        }
+
+        .flip-indicator {
+          margin-top: auto;
+          color: var(--accent-color);
+          font-size: 14px;
+          font-weight: 600;
+        }
+
+        .flip-indicator i {
+          font-size: 20px;
+          margin-bottom: 5px;
+        }
+
+        .flip-card-back .price-info {
+          margin-bottom: 15px;
+        }
+
+        .flip-card-back .price-info h4 {
+          color: var(--accent-color);
+          font-size: 24px;
+          font-weight: 800;
+          margin: 0;
+        }
+
+        .flip-card-back .price-info sup {
+          font-size: 16px;
+        }
+
+        .flip-card-back .price-info span {
+          font-size: 14px;
+          color: var(--default-color);
+          font-weight: 500;
+        }
+
+        .flip-card-back p {
+          color: var(--default-color);
+          font-size: 14px;
+          line-height: 1.5;
+          margin-bottom: 15px;
+          text-align: left;
+        }
+
+        .flip-card-back ul {
+          list-style: none;
+          padding: 0;
+          margin: 0 0 20px 0;
+          text-align: left;
+        }
+
+        .flip-card-back ul li {
+          display: flex;
+          align-items: flex-start;
+          gap: 8px;
+          margin: 6px 0;
+          color: var(--default-color);
+          font-size: 13px;
+        }
+
+        .flip-card-back ul li i {
+          color: var(--accent-color);
+          margin-top: 2px;
+          font-size: 12px;
+        }
+
+        .btn-book {
+          display: inline-block;
+          background: var(--accent-color);
+          color: white;
+          padding: 10px 25px;
+          border-radius: 25px;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 14px;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(207, 231, 198, 0.4);
+          margin-top: auto;
+        }
+
+        .btn-book:hover {
+          background: color-mix(in srgb, var(--accent-color), black 10%);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(207, 231, 198, 0.5);
+        }
+
+        @media (max-width: 768px) {
+          .flip-card {
+            height: 400px;
+          }
+          .flip-card h3 {
+            font-size: 18px;
+          }
+        }
+      </style>
+
+      <script>
+        // Flip card functionality
+        function flipCard(card) {
+          // Remove flipped class from all other cards
+          document.querySelectorAll('.flip-card.flipped').forEach(function(flippedCard) {
+            if (flippedCard !== card) {
+              flippedCard.classList.remove('flipped');
+            }
+          });
+          
+          // Toggle current card
+          card.classList.toggle('flipped');
+        }
+
+        // Close flipped cards when clicking outside
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.flip-card')) {
+            document.querySelectorAll('.flip-card.flipped').forEach(function(card) {
+              card.classList.remove('flipped');
+            });
+          }
+        });
+      </script>
+
+    </section><!-- /Services Section -->
+
+   <!-- /Appointment Section -->
+
+    <section id="testimonials" class="testimonials section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Client Success Stories</h2>
+        <p>Hear from individuals who have transformed their lives through our personalized self-care programs</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="swiper init-swiper" data-speed="600" data-delay="5000"
+          data-breakpoints="{ &quot;320&quot;: { &quot;slidesPerView&quot;: 1, &quot;spaceBetween&quot;: 40 }, &quot;1200&quot;: { &quot;slidesPerView&quot;: 3, &quot;spaceBetween&quot;: 40 } }">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              },
+              "breakpoints": {
+                "320": {
+                  "slidesPerView": 1,
+                  "spaceBetween": 40
+                },
+                "1200": {
+                  "slidesPerView": 3,
+                  "spaceBetween": 20
+                }
+              }
+            }
+          </script>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide">
+              <div class="testimonial-item" "="">
+            <p>
+              <i class=" bi bi-quote quote-icon-left"></i>
+                <span>I met Dr Naresh through the twitter spaces he hosted on Personal & Behavioral finance. Must say he has something quite unique to offer, instead of giving plain generalised advice, he asked us to self-assess our priorities & then think of fund allocation ratios, build upon investing habits. I feel that the fact that he prompts us to actively think makes it better to cater knowledge seeking relevant to individual's context. And it's always a fun & reflective discussion with him; not just due to financial advice, but the questions he asks curiously, in real life & in podcast. Being an opinionated yet very much open to learn other perspectives is also a quality about him I admire.</span>
+                <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/aastha.jpg" class="testimonial-img" alt="">
+                <h3>Aastha Mehta</h3>
+                <h4>Software Engineer</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>My problem in 2021 was to "be good with money which I was struggling to do " and one fine day I met him on Twitter. I told him my problems he replied "Practice Personal Finance". I replied I don't even know the term you are speaking about and he was too kind to host Twitter spaces every night with 2-3 friends and explained in a well structured way what that term is. 
+Next level mentorship by him which taught us how money works!</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/satyam.jpg" class="testimonial-img" alt="">
+                <h3>Satyam Soni</h3>
+                <h4>Software Developer</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>I had the pleasure of collaborating with Naresh on a personal branding project, and his dedication and insight were truly impressive. As an aspiring psychologist pursuing his Master's in Psychology from IGNOU, Naresh brings a unique blend of academic knowledge and practical understanding to his work. His ability to analyze complex situations and offer thoughtful solutions is commendable. Naresh is not only a committed professional but also a collaborative team player, making him an asset to any project he undertakes. I highly recommend him for any role that requires psychological acumen and a strategic mindset.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/sweta.jpg" class="testimonial-img" alt="">
+                <h3>Sweta Udani</h3>
+                <h4>Educator</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+                     <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>It was a pleasure meeting Dr. Shark. I learnt key concepts of personal finance and their deep connection to psychology. His clarity, insight, and practical approach made the learning truly impactful</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/deven.jpg" class="testimonial-img" alt="">
+                <h3>Deven kalathiya</h3>
+                <h4>Software Developer</h4>
+              </div>
+            </div><!-- End testimonial item -->
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Dr. Naresh is a truly exceptional value alignment coach who possesses a rare combination of great communication skills, and a genuine warmth that fosters a safe and supportive environment. His sessions were transformative for me. He expertly guided me through understanding my unique personality type, revealing both my conscious and subconscious values. This newfound clarity has empowered me to make more aligned decisions in all areas of my life.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/krish.jpg" class="testimonial-img" alt="">
+                <h3>Krish Aryan</h3>
+                <h4>Engineer</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>Naresh Thakur is a smart, cooperative, and client-friendly professional with a deep enthusiasm for psychology. He communicates with clarity, often using well-crafted analogies to simplify complex ideas, making him highly relatable in therapeutic settings. Naresh is also experienced with AI tools, seamlessly integrating technology into mental health practices. His adaptability, empathy, and collaborative spirit make him a valuable asset to any psychology-focused team or project.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/muskan.jpg" class="testimonial-img" alt="">
+                <h3>Muskan Yadav</h3>
+                <h4>Counselling Psychologist</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+             <div class="swiper-slide">
+              <div class="testimonial-item">
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  <span>I have understood the importance of personal finance and how my daily life behaviour affects my finances. Also learnt some basic rules of money management.</span>
+                  <i class="bi bi-quote quote-icon-right"></i>
+                </p>
+                <img src="assets/img/testimonials/vikram.jpg" class="testimonial-img" alt="">
+                <h3>Vikram Nayak</h3>
+                <h4>YouTube Creator</h4>
+              </div>
+            </div><!-- End testimonial item -->
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+    </section><!-- /Testimonials Section -->
+
+
+
+
+
+
+    <!-- Faq Section -->
+    <section id="faq" class="faq section light-background">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Frequently Asked Questions</h2>
+        <p>Common questions about The Self Care Lab and our reflective counseling approach</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="faq-container">
+
+              <div class="faq-item">
+                <h3>How long is a counselling session?</h3>
+                <div class="faq-content">
+                  <p>50 minutes.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Do you offer online and in-person sessions?</h3>
+                <div class="faq-content">
+                  <p>Yes.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Where are your in-person sessions held?</h3>
+                <div class="faq-content">
+                  <p>At a coworking space: 19 Forty Cowork, Chembur.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>What are your session fees and package options?</h3>
+                <div class="faq-content">
+                  <p>Rs 1,500 for a single session; Rs 4,000 for a 3-session pack.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>What kind of issues do you help with?</h3>
+                <div class="faq-content">
+                  <p>Career counselling; restlessness; prolonged sadness; low self-esteem; relationship and parental
+                    issues; workplace friction.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>What counselling techniques do you use?</h3>
+                <div class="faq-content">
+                  <p>CBT — Cognitive Behavioural Therapy (trained at the Beck Institute).</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>What is your counselling approach or philosophy?</h3>
+                <div class="faq-content">
+                  <p>Eclectic approach.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Is my information kept confidential?</h3>
+                <div class="faq-content">
+                  <p>Yes — information is kept confidential and shared with caregivers only in cases of self-harm risk or
+                    risk to others.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Do children need parental consent for testing?</h3>
+                <div class="faq-content">
+                  <p>Yes — parental/guardian consent is required for clients below 18.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Will I get a progress or assessment report?</h3>
+                <div class="faq-content">
+                  <p>Yes — only if testing is performed.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>How can I book a session?</h3>
+                <div class="faq-content">
+                  <p>Via WhatsApp, email, or the website booking portal.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>What payment methods do you accept?</h3>
+                <div class="faq-content">
+                  <p>UPI / Cash.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Do you provide corporate wellness programs?</h3>
+                <div class="faq-content">
+                  <p>Yes.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+              <div class="faq-item">
+                <h3>Do you host mental health awareness events or workshops?</h3>
+                <div class="faq-content">
+                  <p>Yes.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+ 
+              <div class="faq-item">
+                <h3>Do you offer home visits for children’s vocational counselling?</h3>
+                <div class="faq-content">
+                  <p>Yes.</p>
+                </div>
+                <i class="faq-toggle bi bi-chevron-right"></i>
+              </div><!-- End Faq item-->
+
+            </div>
+
+          </div><!-- End Faq Column-->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Faq Section -->
+
+   
+      <style>
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shimmer {
+          0% { left: -100%; }
+          100% { left: 100%; }
+        }
+
+        .contact-visual div:hover {
+          transform: scale(1.05);
+        }
+      </style>
+
+    </section>
+
+    <section id="feedback" class="section"
+      style="text-align: center; padding: 18px 0 12px 0; background: var(--surface-color);">
+      <div class="container" style="max-width: 420px; margin: auto;">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <span
+            style="font-weight: bold; color: var(--heading-color); font-size: 1.08rem; margin-bottom: 10px; display: block; white-space: nowrap;">
+           Quick feedback - helps us improve!</span>
+          <a href="https://docs.google.com/forms/d/1LEXSWh3eZmXNDr6GwlmCF6Pne80ORuOy5er-oQbvFK4" target="_blank"
+            class="btn-get-started"
+            style="background: var(--accent-color); color: var(--contrast-color); font-size: 16px; font-weight: bold; padding: 10px 28px; border-radius: 24px; box-shadow: 0 2px 8px rgba(255, 211, 78, 0.10); text-decoration: none; letter-spacing: 1px; transition: background 0.3s; margin-bottom: 4px; display: inline-flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.2em; margin-right: 4px;">💬</span>
+            <span style="font-weight: bold;">Quick Feedback</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer light-background">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">The Self Care Lab</span>
+          </a>
+          <div class="footer-contact pt-3">
+
+            <p class="mb-1"><strong>Address:</strong> <span>19 Forty Cowork, Chembur</span></p>
+            <p class="mt-3"><strong>Phone:</strong> <span>7506802501</span></p>
+            <p><strong>Email:</strong> <span>theselfcarebooster@gmail.com</span></p>
+          </div>
+          <div class="social-links d-flex mt-4">
+          </div>
+        </div>
+
+  <div class="col-lg-2 col-md-3 footer-links ms-md-3 ms-lg-4">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#about">About Naresh</a></li>
+            <li><a href="#services-offered">Services</a></li>
+            <li><a href="#testimonials">Success Stories</a></li>
+          </ul>
+        </div>
+
+  <div class="col-lg-2 col-md-3 footer-links ms-md-3 ms-lg-4">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#services-offered">Counselling Session 1:1</a></li>
+            <li><a href="#services-offered">Self Care Pack</a></li>
+            <li><a href="#services-offered">Monthly Mentorship Program <small>(Only for students)</small></a></li>
+          </ul>
+        </div>
+
+  <div class="col-lg-2 col-md-3 footer-links ms-md-5 ms-lg-6">
+          <h4>Get Started</h4>
+          <ul>
+            <li><a href="booking.html">Book Your Session</a></li>
+            <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=theselfcarebooster@gmail.com">Email Naresh</a></li>
+            <li><a href="#faq">Common Questions</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">The Self Care Lab</strong> <span>All Rights
+          Reserved</span></p>
+      <div class="credits">
+        <strong>Designed by <a href="https://www.linkedin.com/in/deven-kalathiya/" target="_blank"
+            style="color:#497D74; font-weight: bold;">Deven
+            Kalathiya</a></strong>
+      </div>
+    </div>
+
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

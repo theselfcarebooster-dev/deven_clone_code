@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payment — Self Care Lab (Template)</title>
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Temporary payment page template for Self Care Lab — contains QR image and direct payment link.">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+  :root{--brand:#2e8b57;--muted:#6c757d}
+  body{font-family: Poppins, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,#f4fbf6 0%, #f8faf8 100%); color:#0b2a1a}
+  .container{max-width:720px;margin:34px auto;padding:18px 20px;background:linear-gradient(180deg,#ffffff,#fbfff9);border-radius:14px;box-shadow:0 10px 30px rgba(12,30,15,0.06);transform:translateZ(0);overflow:hidden}
+    .qr-wrap{display:flex;gap:24px;align-items:center;justify-content:center;flex-wrap:wrap}
+  .qr{width:220px;height:220px;border-radius:12px;border:1px solid #e9f5ed;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#ffffff,#f6fff6)}
+  .info{max-width:380px}
+    .btn-pay{background:var(--brand);color:#fff;border:none;padding:12px 18px;border-radius:8px;font-weight:600}
+    .note{color:var(--muted);font-size:0.94rem;margin-top:12px}
+    .small-muted{font-size:0.9rem;color:#607d6b}
+    footer{margin-top:20px;font-size:0.85rem;color:#6b7f75}
+  pre.replace{background:#f1f7f1;padding:10px;border-radius:6px;color:#234b36}
+  .upi-id{font-size:26px;font-weight:700;color:var(--brand);letter-spacing:0.4px}
+  .header-band{height:64px;background:linear-gradient(90deg,#eaf8f0 0%, #dff3e6 100%);border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:center}
+  .title-small{font-size:18px;margin:0;color:#214f3a;font-weight:600}
+  .action-row{margin-top:18px;display:flex;gap:12px;justify-content:center}
+  .btn-action{background:#fff;border:1px solid #d7eede;color:var(--brand);padding:10px 14px;border-radius:8px;font-weight:600;cursor:pointer}
+  .btn-primary-action{background:var(--brand);color:#fff;border:none}
+  .fade-in{animation:fadeIn .5s ease both}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="container text-center fade-in">
+    <div class="header-band"><h2 class="title-small">Self Care Lab — Secure Payment</h2></div>
+    <h1 style="margin:8px 0 6px">Payment</h1>
+    <p class="small-muted" style="margin-bottom:12px">Scan the QR or use the UPI ID below to pay.</p>
+
+    <div class="qr-wrap" style="justify-content:center;margin-top:6px">
+      <div class="qr" id="qr-placeholder" aria-hidden="true"></div>
+    </div>
+
+    <div style="margin-top:20px">
+      <div id="upi-id" class="upi-id">narnia.nt-1@okhdfcbank</div>
+      <div class="note small-muted" style="margin-top:10px">Copy the UPI ID or scan the QR code to complete payment.</div>
+
+      <div class="action-row">
+        <button id="download-qr" class="btn-action">Download QR</button>
+        <button id="copy-upi" class="btn-action btn-primary-action">Copy UPI ID</button>
+      </div>
+    </div>
+
+    <footer>
+      <div style="margin-top:10px;font-size:0.95rem;color:#233c30">
+        <div><strong>Phone:</strong> <a href="tel:+917506802501" style="color:var(--brand);text-decoration:none">+91 7506802501</a></div>
+        <div style="margin-top:6px"><strong>Email:</strong> <a href="mailto:theselfcarebooster@gmail.com" style="color:var(--brand);text-decoration:none">theselfcarebooster@gmail.com</a></div>
+      </div>
+      <div style="margin-top:12px;font-size:0.9rem;color:#6b7f75">This page is a temporary payment template and is not linked from the site.</div>
+    </footer>
+  </div>
+
+  <script>
+    // Load provided QR image (assets/img/payment_QR.jpeg) if present, otherwise keep the SVG placeholder
+    (function(){
+      const qrEl = document.getElementById('qr-placeholder');
+      const imgPath = 'assets/img/dr_shark_upi.jpeg';
+      const img = new Image();
+      img.src = imgPath + '?_ts=' + Date.now();
+      img.onload = function(){
+        img.width = 220; img.height = 220; img.style.borderRadius = '12px'; img.alt = 'Payment QR code';
+        qrEl.innerHTML = '';
+        qrEl.appendChild(img);
+      };
+      img.onerror = function(){
+        // fallback: insert a simple inline SVG QR placeholder
+      qrEl.innerHTML = `\n          <svg width="160" height="160" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">\n            <rect width="24" height="24" rx="2" fill="#e9f7ec"/>\n            <path d="M3 3h6v6H3zM15 3h6v6h-6zM3 15h6v6H3zM11 11h2v2h-2zM14 14h6v6h-6zM11 3h2v2h-2z" fill="#2e8b57"/>\n          </svg>\n        `;
+      };
+    })();
+
+    // Copy UPI to clipboard and show temporary feedback
+    (function(){
+      const copyBtn = document.getElementById('copy-upi');
+      const upiEl = document.getElementById('upi-id');
+      copyBtn.addEventListener('click', async function(){
+        const text = upiEl.textContent.trim();
+        try{
+          await navigator.clipboard.writeText(text);
+          const original = copyBtn.textContent;
+          copyBtn.textContent = 'Copied ✓';
+          setTimeout(()=> copyBtn.textContent = original, 1800);
+        }catch(e){
+          // fallback for older browsers
+          const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+          try{ document.execCommand('copy'); copyBtn.textContent = 'Copied ✓'; setTimeout(()=> copyBtn.textContent = 'Copy UPI ID',1800);}catch(err){ alert('Copy failed — please select and copy the UPI ID manually.'); }
+          ta.remove();
+        }
+      });
+
+      // Download QR button: attempts to download the image from imgPath; if missing, generates SVG download
+      const downloadBtn = document.getElementById('download-qr');
+      downloadBtn.addEventListener('click', function(){
+        const imgEl = document.querySelector('#qr-placeholder img');
+        if(imgEl && imgEl.src){
+          const a = document.createElement('a'); a.href = imgEl.src; a.download = 'payment-qr.jpeg'; document.body.appendChild(a); a.click(); a.remove();
+          return;
+        }
+        // fallback: create a downloadable SVG blob from the placeholder
+        const svg = document.querySelector('#qr-placeholder svg');
+        if(svg){
+          const serializer = new XMLSerializer();
+          const svgStr = serializer.serializeToString(svg);
+          const blob = new Blob([svgStr], {type: 'image/svg+xml'});
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a'); a.href = url; a.download = 'payment-qr.svg'; document.body.appendChild(a); a.click(); a.remove();
+          URL.revokeObjectURL(url);
+        } else {
+          alert('No QR image found to download.');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
